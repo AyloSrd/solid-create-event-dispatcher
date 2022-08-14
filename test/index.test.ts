@@ -5,19 +5,21 @@
  import { createEventDispatcher } from '../src/index'
 
  interface Props {
-     onChangeStep: (evt: CustomEvent<string>) => void,
-     onCancel: (evt: CustomEvent<string>) => void,
-     onNullableEvent?: () => void
+  onChangeStep: (evt: CustomEvent<string>) => void,
+  onCancel: (evt: CustomEvent<string>) => void,
+  onNullableEvent?: () => void
+  nonEvent: string,
  }
  
  const step = { at: 'first' }
  
  const props: Props = {
-   onChangeStep: evt => step.at = evt.detail,
-   onCancel: evt => {
-     evt.preventDefault()
-     step.at= 'third'
-   },
+  onChangeStep: evt => step.at = evt.detail,
+  onCancel: evt => {
+    evt.preventDefault()
+    step.at= 'third'
+  },
+  nonEvent: 'not an event'
  }
  
  test('not preventing default, callack is present, it should return true', () => {
@@ -33,7 +35,7 @@
  })
  
  test('preventing default, callack is present, it should return false', () => {
-   expect(createEventDispatcher(props)('cancel', 'third', true)).toBe(false)
+   expect(createEventDispatcher(props)('cancel', 'third', { cancelable: true })).toBe(false)
  })
  
  test('check if callback was correctly executed after event.preventDefault()', () => {

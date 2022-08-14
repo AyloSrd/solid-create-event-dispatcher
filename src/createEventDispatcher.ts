@@ -4,34 +4,38 @@ type Handlers<T> = {
     [Property in keyof T as Property extends `on${infer EventName}` ? Uncapitalize<EventName> : never]: T[Property]
 }
 
+type DispatcherOptions = {
+  cancelable: boolean,
+}
+
 export function createEventDispatcher<Props>(props: Props) {
   return function<N extends keyof Handlers<Props> & string>(
     ...args: Handlers<Props>[N] extends (undefined | ((evt?: CustomEvent<infer D> | undefined) => any)) ?
       [
         eventName: N,
         payload?: D | undefined,
-        cancelable?: boolean,
+        dispatcherOptions?: DispatcherOptions,
       ]
     : Handlers<Props>[N] extends (undefined | ((evt: CustomEvent<infer D>) => any)) ?
       [
         eventName: N,
         payload: D,
-        cancelable?: boolean,
+        dispatcherOptions?: DispatcherOptions,
       ]
     :
       [
         eventName: N,
         payload?: any,
-        cancelable?: boolean,
+        dispatcherOptions?: DispatcherOptions,
       ]
   ): boolean {
-    const [eventName, payload, cancelable] = args
+    const [eventName, payload, dispatcherOptions] = args
     const propName = get_event_listener_name(eventName) as string & keyof Props
     const cb = props[propName]
 
     if (typeof cb !== 'function') return true
 
-    const customEvt = create_custom_evt(eventName, payload, cancelable ?? false)
+    const customEvt = create_custom_evt(eventName, payload, dispatcherOptions?.cancelable ?? false)
     cb(customEvt)
 
     return !customEvt.defaultPrevented
