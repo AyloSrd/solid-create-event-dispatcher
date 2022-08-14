@@ -1,8 +1,9 @@
 {
   "name": "solid-create-event-dispatcher",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "AyloSrd",
+  "repository": "AyloSrd/evento-react",
   "main": "dist/index.js",
   "module": "dist/solid-create-event-dispatcher.esm.js",
   "typings": "dist/index.d.ts",
@@ -53,6 +54,28 @@
     "husky": "^8.0.1",
     "size-limit": "^8.0.0",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.4"
-  }
+    "typescript": "^4.1.5"
+  },
+  "keywords": [
+    "solid",
+    "solid-js",
+    "solidJs",
+    "solid primitive",
+    "primitive",
+    "event-dispatcher",
+    "event",
+    "emit",
+    "event-emitter",
+    "component-event",
+    "component event",
+    "dispatch",
+    "create event dispatcher",
+    "event dispatcher",
+    "payload",
+    "custom event",
+    "custom-events",
+    "event detail",
+    "solid event",
+    "prop-drilling"
+  ]
 }
