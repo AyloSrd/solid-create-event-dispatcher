@@ -1,3 +1,3 @@
-import { createEventDispatcher } from './createEventDispatcher'
+import { createEventDispatcher, Dispatcher } from './createEventDispatcher'
 
-export { createEventDispatcher }
+export { createEventDispatcher, Dispatcher }

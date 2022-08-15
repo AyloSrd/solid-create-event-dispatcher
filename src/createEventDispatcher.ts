@@ -1,12 +1,14 @@
 import { create_custom_evt, get_event_listener_name } from "./utils"
 
-type Handlers<T> = {
+export type Handlers<T> = {
     [Property in keyof T as Property extends `on${infer EventName}` ? Uncapitalize<EventName> : never]: T[Property]
 }
 
 type DispatcherOptions = {
   cancelable: boolean,
 }
+
+export type Dispatcher<T> = ReturnType<(typeof createEventDispatcher<T>)>
 
 export function createEventDispatcher<Props>(props: Props) {
   return function<N extends keyof Handlers<Props> & string>(

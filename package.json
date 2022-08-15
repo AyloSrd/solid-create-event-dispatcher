@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "license": "MIT",
   "author": "AyloSrd",
-  "repository": "AyloSrd/evento-react",
+  "repository": "AyloSrd/solid-create-event-dispatcher",
   "main": "dist/index.js",
   "module": "dist/solid-create-event-dispatcher.esm.js",
   "typings": "dist/index.d.ts",
