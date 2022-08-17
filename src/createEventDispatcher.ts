@@ -8,8 +8,6 @@ type DispatcherOptions = {
   cancelable: boolean,
 }
 
-export type Dispatcher<T> = ReturnType<(typeof createEventDispatcher<T>)>
-
 export function createEventDispatcher<Props>(props: Props) {
   return function<N extends keyof Handlers<Props> & string>(
     ...args: Handlers<Props>[N] extends (undefined | ((evt?: CustomEvent<infer D> | undefined) => any)) ?
