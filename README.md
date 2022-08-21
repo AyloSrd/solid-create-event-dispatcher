@@ -1,5 +1,5 @@
 # `createEventDispatcher`
-Provides a `createReducer` primitive for emitting component events. 
+`createDispatcher` creates a custom-event dispatcher for emitting component events.
 SolidJS equivalent of Svelte's [homonymous function](svelte.dev/docs#run-time-svelte-createeventdispatcher).
 
 ## Installation
